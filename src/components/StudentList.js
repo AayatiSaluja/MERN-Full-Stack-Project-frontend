@@ -1,4 +1,3 @@
-
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import StudentListRow from "./StudentListRow";
@@ -7,7 +6,7 @@ function StudentList()
 {
     const [arr,setArr] = useState([]);
     useEffect(()=>{
-        Axios.get("http://localhost:4000/studentRoute/")
+        Axios.get("https://backend-testing-jvwd.onrender.com/studentRoute")
         .then((res)=>{
             if(res.status === 200)
                 setArr(res.data);
@@ -23,9 +22,8 @@ function StudentList()
         })
     }
     return (
-        <table class="table table-bordered table-striped table-warning">
+        <table style={{maxWidth:"60%", margin: "50px auto"}} class="table table-bordered table-striped table-warning">
             <thead>
-                <br/><br/>
                 <tr>
                     <th class="text-center">Name</th>
                     <th class="text-center">Email</th>
@@ -33,11 +31,12 @@ function StudentList()
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
-            <tbody class="text-center">
+            <tbody>
                 {ListItems()}
             </tbody>
         </table>
     )
 }
 export default StudentList;
+
 
